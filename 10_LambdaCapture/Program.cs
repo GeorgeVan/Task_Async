@@ -106,7 +106,9 @@ public class Example
         Task.WaitAll(taskArray);
     }
 
-    //这个虽然对，但是没有必要。
+    //传递一个Object的目的在于减少本地变量Closure所带来的内存损耗。
+    //The overloads containing an object parameter simply pass that value through to the continuation delegate; 
+    //this is just an optimization to avoid an extra allocation in some cases. 
     public static void Main2()
     {
         // Create the task object by using an Action(Of Object) to pass in custom data

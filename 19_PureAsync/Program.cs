@@ -135,9 +135,8 @@ class PureAsync
             await Task.Delay(2000).ConfigureAwait(false);
             Console.WriteLine(stopwatch.Elapsed.Seconds + ": OUT @ " + Thread.CurrentThread.ManagedThreadId);
         };
-
-
         Task sharedTask = job();
+        //启动job
 
         Func<int, Task> job1 = async (i) =>
         {
@@ -146,6 +145,7 @@ class PureAsync
             Console.WriteLine(stopwatch.Elapsed.Seconds + ": Waited # " + i + " @ " + Thread.CurrentThread.ManagedThreadId);
         };
 
+        //启动10个任务同时等待sharedTask
         await Task.WhenAll(Enumerable.Range(1, 10).Select(job1));
     }
 }
