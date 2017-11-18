@@ -63,7 +63,7 @@ class DataflowExecutionBlocks
         // Create a continuation task that completes the ActionBlock<int>
         // object when the TransformBlock<string, int> finishes.
        // countBytes.Completion.ContinueWith(delegate { printResult.Complete(); });
-        //GG
+        //G将这个注释掉，用下面那个
 
         // Post the path to the temporary file to the 
         // TransformBlock<string, int> object.
