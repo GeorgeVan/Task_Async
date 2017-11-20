@@ -125,6 +125,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "61_RxWin", "Rx\RxWin\61_RxW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxWPF", "Rx\RxWPF\RxWPF.csproj", "{5433C507-3A62-4396-B58D-3AD93FD514F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "70_CLR_VIA_C_Ch28-IOOpsGWPF", "70_CLR_VIA_C#Ch28-IOOpsGWPF\70_CLR_VIA_C_Ch28-IOOpsGWPF.csproj", "{FB100CF6-ADBC-4E52-AC05-0D9A46A0AFBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -351,6 +353,10 @@ Global
 		{5433C507-3A62-4396-B58D-3AD93FD514F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5433C507-3A62-4396-B58D-3AD93FD514F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5433C507-3A62-4396-B58D-3AD93FD514F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB100CF6-ADBC-4E52-AC05-0D9A46A0AFBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB100CF6-ADBC-4E52-AC05-0D9A46A0AFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB100CF6-ADBC-4E52-AC05-0D9A46A0AFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB100CF6-ADBC-4E52-AC05-0D9A46A0AFBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

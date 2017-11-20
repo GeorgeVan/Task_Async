@@ -1,0 +1,49 @@
+﻿<Window x:Class="Ch28_1_IOOpsGWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ch28_1_IOOpsGWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="1085">
+    <Grid>
+        <Label x:Name="labelMsg" Content="Label" HorizontalAlignment="Left" Margin="451,24,0,0" VerticalAlignment="Top" Height="23" Width="419"/>
+        <Button x:Name="buttonStartServer1" Content="StartServer" HorizontalAlignment="Left" Height="34" Margin="140,69,0,0" VerticalAlignment="Top" Width="88" Click="buttonStart_Click"/>
+        <Button x:Name="buttonStartClient" Content="StartClient" HorizontalAlignment="Left" Margin="510,69,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="-0.055,-1.058" Height="34" Click="buttonStartClient_Click"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="33,128,0,0" VerticalAlignment="Top" Width="106"/>
+        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Margin="171,128,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="label2" Content="Label" HorizontalAlignment="Left" Margin="296,128,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Margin="33,168,0,0" VerticalAlignment="Top" Width="106"/>
+        <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="171,168,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="label5" Content="Label" HorizontalAlignment="Left" Margin="296,168,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="label6" Content="Label" HorizontalAlignment="Left" Margin="403,168,0,0" VerticalAlignment="Top" Width="102"/>
+        <Label x:Name="label7" Content="Label" HorizontalAlignment="Left" Margin="510,168,0,0" VerticalAlignment="Top" Width="149"/>
+        <Label x:Name="label8" Content="Label" HorizontalAlignment="Left" Margin="33,215,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.89,0.617" Width="106"/>
+        <Label x:Name="label9" Content="Label" HorizontalAlignment="Left" Margin="174,215,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="label10" Content="Label" HorizontalAlignment="Left" Margin="296,215,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="label11" Content="Label" HorizontalAlignment="Left" Margin="403,215,0,0" VerticalAlignment="Top" Width="102"/>
+        <Label x:Name="label12" Content="Label" HorizontalAlignment="Left" Margin="510,215,0,0" VerticalAlignment="Top" Width="149"/>
+        <Label x:Name="label13" Content="Label" HorizontalAlignment="Left" Margin="659,168,0,0" VerticalAlignment="Top" Width="130"/>
+        <Label x:Name="label14" Content="Label" HorizontalAlignment="Left" Margin="659,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.435,0.359" Width="130"/>
+        <Label x:Name="label15" Content="Label" HorizontalAlignment="Left" Margin="794,168,0,0" VerticalAlignment="Top" Width="122"/>
+        <Label x:Name="label16" Content="Label" HorizontalAlignment="Left" Height="28" Margin="794,211,0,0" VerticalAlignment="Top" Width="122"/>
+        <Label x:Name="label17" Content="Label" HorizontalAlignment="Left" Margin="436,128,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label18" Content="Label" HorizontalAlignment="Left" Margin="595,128,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonResetData" Content="ResetData" HorizontalAlignment="Left" Margin="962,69,0,0" VerticalAlignment="Top" Width="87" Height="34" Click="buttonResetData_Click"/>
+        <TextBox x:Name="textBoxClientCount" HorizontalAlignment="Left" Height="23" Margin="396,75,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="80" Cursor="Cross"/>
+        <CheckBox x:Name="checkBoxPureAsync" Content="完全异步" HorizontalAlignment="Left" Margin="47,78,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label19" Content="Label" HorizontalAlignment="Left" Margin="942,168,0,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="label20" Content="Label" HorizontalAlignment="Left" Margin="942,211,0,0" VerticalAlignment="Top" Width="107"/>
+        <Button x:Name="buttonStartClient2" Content="StartClient2" HorizontalAlignment="Left" Margin="691,70,0,0" VerticalAlignment="Top" Width="89" Height="33" Click="buttonStartClient2_Click"/>
+        <ProgressBar x:Name="progressBarServer" HorizontalAlignment="Left" Height="13" Margin="39,261,0,0" VerticalAlignment="Top" Width="1000" RenderTransformOrigin="0.5,0.5"/>
+        <ProgressBar x:Name="progressBarClient" HorizontalAlignment="Left" Height="13" Margin="39,288,0,0" VerticalAlignment="Top" Width="1000"/>
+        <Button x:Name="buttonCancelServer" Content="CancelServer" HorizontalAlignment="Left" Margin="255,70,0,0" VerticalAlignment="Top" Width="80" Height="30" Click="buttonCancelServer_Click"/>
+        <Button x:Name="buttonCancelClient" Content="CancelClient" HorizontalAlignment="Left" Height="33" Margin="828,70,0,0" VerticalAlignment="Top" Width="88" Click="buttonCancelClient_Click"/>
+        <TextBox x:Name="textBoxTalkCount" HorizontalAlignment="Left" Height="23" Margin="88,26,0,0" TextWrapping="Wrap" Text="50" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="textBoxSlotCount" HorizontalAlignment="Left" Height="23" Margin="292,26,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" Width="98"/>
+        <Label x:Name="label21" Content="通讯次数" HorizontalAlignment="Left" Margin="21,26,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label22" Content="并发数" HorizontalAlignment="Left" Margin="228,26,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonShowException" Content="ShowException" HorizontalAlignment="Left" Margin="921,26,0,0" VerticalAlignment="Top" Width="106" Click="buttonShowException_Click"/>
+
+    </Grid>
+</Window>

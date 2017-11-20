@@ -1,12 +1,29 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
 //https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/how-to-handle-exceptions-in-parallel-loops
+
+public static class Ext {
+    [MethodImpl(MethodImplOptions.AggressiveInlining)] // Causes compiler to optimize the call away
+    public static async Task<T> DisableSysDebugOnCancel<T>(this Task<T> task, T canceledValue, T faultedValue)
+    {
+        return await task.ContinueWith(
+            (t) =>
+            {
+                if (t.IsCanceled) return canceledValue;
+                else if (t.IsFaulted) return faultedValue;
+                else return t.Result;
+            },
+            TaskContinuationOptions.ExecuteSynchronously );
+    }
+}
 
 class ExceptionDemo2
 {
@@ -19,9 +36,95 @@ class ExceptionDemo2
         //Main101();
         //AsyncVoidExceptions_CannotBeCaughtByCatch();
         //Main3();
-        Main4();
+        //Main4();
         //Main4Sync().Wait();
+        //Main5();
+        //Main6();
+        Main7();
         Console.ReadKey();
+    }
+
+
+    static async Task AwaitThis(Task t1)
+    {
+        try
+        {
+            Debug.WriteLine("await t1.");
+            await t1;
+        }
+        catch { }
+        Debug.WriteLine("t1 awaited.");
+    }
+
+
+    //只要在程序中await一个Task，这个Task是Canceled或者Faulted，则每行Await都会触发Debug信息:
+    //Exception thrown: 'System.Threading.Tasks.TaskCanceledException' in mscorlib.dll
+    //任务处于Canceled状态后，无论再调用await多少次，也每次都会触发。
+    static void Main7()
+    {
+        CancellationTokenSource cts = new CancellationTokenSource();
+        Task t = LongDelay1(cts.Token);
+        Task t1 = t.ContinueWith( _ => { },TaskContinuationOptions.OnlyOnFaulted| TaskContinuationOptions.ExecuteSynchronously);
+        Debug.WriteLine("Task created.");
+        Thread.Sleep(1000);
+        Debug.WriteLine("Before Cancel Task.");
+        cts.Cancel();
+        Debug.WriteLine("Task canceled.");
+
+        Debug.WriteLine("Wait Task.");
+        Task.WaitAll(new Task[] { t });
+        Task t2 = AwaitThis(t1);
+        t2.Wait();
+        Thread.Sleep(1000);
+
+        Task t3 = AwaitThis(t1);
+        t3.Wait();
+
+        Console.WriteLine(t1.Status);
+    }
+
+
+    async static Task<string> DelayedString(CancellationToken token)
+    {
+        await Task.Delay(5000, token);
+        return "a";
+    }
+
+    static void Main6()
+    {
+        CancellationTokenSource cts = new CancellationTokenSource();
+        Task<string> t = DelayedString(cts.Token).DisableSysDebugOnCancel("canceled","faulted");
+        cts.Cancel();
+
+        Console.WriteLine(t.Result);
+    }
+    
+    static void Main5()
+    {
+        CancellationTokenSource cts = new CancellationTokenSource();
+        Task t = LongDelay(cts.Token);
+        Thread.Sleep(1000);
+        cts.Cancel();
+        Task.WaitAll(new Task[] { t });
+    }
+
+    async static Task<string> LongDelay1(CancellationToken token)
+    {
+        try
+        {
+            Debug.WriteLine("await Task.Delay");
+            await Task.Delay(1000000, token);
+        }
+        catch { }
+        Debug.WriteLine("await Task.Delay end");
+
+        return "a";
+    }
+
+    async static Task<string> LongDelay(CancellationToken token)
+    {
+        await Task.Delay(1000000,token).ContinueWith(tsk => { });
+        return "a";
     }
 
     static void Main1()

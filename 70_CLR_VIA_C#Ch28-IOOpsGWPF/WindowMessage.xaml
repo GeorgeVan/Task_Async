@@ -1,0 +1,13 @@
+﻿<Window x:Class="Ch28_1_IOOpsGWPF.WindowMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ch28_1_IOOpsGWPF"
+        mc:Ignorable="d"
+        Title="WindowMessage" Height="344.619" Width="400.903" Loaded="Window_Loaded">
+    <Grid>
+        <ListBox x:Name="listBoxMsg" HorizontalAlignment="Left" Height="297" Margin="10,10,0,0" VerticalAlignment="Top" Width="374" IsSynchronizedWithCurrentItem="True"/>
+
+    </Grid>
+</Window>
