@@ -269,6 +269,7 @@ public partial class PipeDemo
         lock (_activeSlots)
             activeSlots = _activeSlots.ToArray();
 
+        //这个实现只是供显示用，因此没有保证镜像准确。可能会存在数据不同时的情况。
         double[] progress = new double[activeSlots.Length ];
         for(int i=0;i< activeSlots.Length; i++)
         {
@@ -278,3 +279,5 @@ public partial class PipeDemo
         return progress;
     }
 }
+
+

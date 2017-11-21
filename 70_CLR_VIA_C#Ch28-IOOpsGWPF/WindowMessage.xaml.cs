@@ -20,8 +20,8 @@ namespace Ch28_1_IOOpsGWPF
     /// </summary>
     public partial class WindowMessage : Window
     {
-        ConcurrentQueue<string> _Messages;
-        public WindowMessage(ConcurrentQueue<string> Messages)
+        IEnumerable<string> _Messages;
+        public WindowMessage(IEnumerable<string> Messages)
         {
             _Messages = Messages;
             InitializeComponent();

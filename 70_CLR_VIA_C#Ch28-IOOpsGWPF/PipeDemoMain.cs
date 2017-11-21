@@ -43,9 +43,6 @@ public partial class PipeDemo
                 int n = Interlocked.Decrement(ref clientCount);
                 if (n < 0) break;
                 IssueClientRequestAsync("localhost", "Request #" + n)
-                    .ContinueWith(delegate { Interlocked.Increment(ref _pipeInfo.ccompleted); },
-                                                    TaskContinuationOptions.ExecuteSynchronously | 
-                                                    TaskContinuationOptions.OnlyOnRanToCompletion)
                     .Wait();
             }
         };
@@ -68,7 +65,7 @@ public partial class PipeDemo
         // Make lots of async client requests; save each client's Task<String>
         Task<String>[] requests = new Task<String>[clientCount];
         for (Int32 n = 0; n < requests.Length; n++) {
-            Interlocked.Increment(ref _pipeInfo.created);
+            _pipeInfo.created++;
             requests[n] = IssueClientRequestAsync("localhost", "Request #" + n);
         }
         //await WaitForClientToCompleteAsync(requests);
